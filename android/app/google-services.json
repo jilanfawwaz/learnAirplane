@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "466298764495",
+    "project_id": "airplane-320c8",
+    "storage_bucket": "airplane-320c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466298764495:android:0456f8380ca88b04658bba",
+        "android_client_info": {
+          "package_name": "com.jilanfawwaz.learn_app_plane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466298764495-l7nfh45to9s81kdgk417o7aaroramq0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAq-oJazcqvQ4vpd2VM-WwETfi3mS6EBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466298764495-l7nfh45to9s81kdgk417o7aaroramq0p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "466298764495-3sgdfma9kburqrfnps8vo2qkoetourik.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jilanfawwaz.learnAppPlane"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
