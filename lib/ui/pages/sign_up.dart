@@ -129,7 +129,11 @@ class SignUp extends StatelessWidget {
             return CustomButton(
               cText: "Get Started",
               onPressed: () {
-                Navigator.pushNamed(context, '/bonuspage');
+                context.read<AuthCubit>().signUp(
+                    name: nameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
+                    hobby: hobbyController.text);
               },
               cWidth: 287,
               cMargin: EdgeInsets.only(

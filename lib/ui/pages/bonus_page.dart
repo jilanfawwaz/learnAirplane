@@ -20,7 +20,7 @@ class BonusPage extends StatelessWidget {
                 "Big Bonus 🎉",
                 style: cBlackThemeHeadline24.copyWith(fontSize: 32),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
