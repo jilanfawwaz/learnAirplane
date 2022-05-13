@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_app_plane/cubit/auth_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 import 'package:learn_app_plane/ui/widget/custom_form.dart';
@@ -21,6 +23,37 @@ class SignUp extends StatelessWidget {
           "Join us and get \nyour next journey",
           style: cBlackThemeHeadline24,
         ),
+      );
+    }
+
+    Widget submitButton() {
+      return BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state is AuthSuccess) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'bonuspage', (route) => false);
+          } else if (state is AuthFailed) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.error)));
+          }
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          if (state is AuthLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          return CustomButton(
+            cText: "Get Started",
+            cDestination: '/bonuspage',
+            cWidth: 287,
+            cMargin: EdgeInsets.only(
+              top: 10,
+            ),
+          );
+        },
       );
     }
 
@@ -132,14 +165,7 @@ class SignUp extends StatelessWidget {
                 controllerForm: hobbyController,
                 cText: "Hobby",
                 cHint: "Input Hobby Here"),
-            CustomButton(
-              cText: "Get Started",
-              cDestination: '/bonuspage',
-              cWidth: 287,
-              cMargin: EdgeInsets.only(
-                top: 10,
-              ),
-            )
+            submitButton(),
           ],
         ),
       );
