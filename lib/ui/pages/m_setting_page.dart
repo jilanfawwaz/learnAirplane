@@ -8,7 +8,11 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CustomButton(cText: "SignOut", cDestination: '/'),
+        child: CustomButton(
+            cText: "SignOut",
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            }),
       ),
     );
   }

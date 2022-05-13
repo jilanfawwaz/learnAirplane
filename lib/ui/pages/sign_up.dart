@@ -7,6 +7,7 @@ import 'package:learn_app_plane/ui/widget/custom_form.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
+
   TextEditingController nameController = TextEditingController(text: '');
   TextEditingController emailController = TextEditingController(text: '');
   TextEditingController passwordController = TextEditingController(text: '');
@@ -23,37 +24,6 @@ class SignUp extends StatelessWidget {
           "Join us and get \nyour next journey",
           style: cBlackThemeHeadline24,
         ),
-      );
-    }
-
-    Widget submitButton() {
-      return BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if (state is AuthSuccess) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, 'bonuspage', (route) => false);
-          } else if (state is AuthFailed) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.error)));
-          }
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          if (state is AuthLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          return CustomButton(
-            cText: "Get Started",
-            cDestination: '/bonuspage',
-            cWidth: 287,
-            cMargin: EdgeInsets.only(
-              top: 10,
-            ),
-          );
-        },
       );
     }
 
@@ -136,6 +106,40 @@ class SignUp extends StatelessWidget {
     }*/
 
     Widget inputForm() {
+      Widget submitButton() {
+        return BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSuccess) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, 'bonuspage', (route) => false);
+            } else if (state is AuthFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                backgroundColor: cRedColor,
+                content: Text(state.error),
+              ));
+            }
+          },
+          builder: (context, state) {
+            if (state is AuthLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            //print(nameController.text);
+            return CustomButton(
+              cText: "Get Started",
+              onPressed: () {
+                Navigator.pushNamed(context, '/bonuspage');
+              },
+              cWidth: 287,
+              cMargin: EdgeInsets.only(
+                top: 10,
+              ),
+            );
+          },
+        );
+      }
+
       return Container(
         margin: EdgeInsets.only(top: 30),
         padding: EdgeInsets.symmetric(
@@ -149,20 +153,20 @@ class SignUp extends StatelessWidget {
         child: Column(
           children: [
             CustomForm(
-                controllerForm: nameController,
+                controller: nameController,
                 cText: "Full Name",
                 cHint: "Input Name Here"),
             CustomForm(
-                controllerForm: emailController,
+                controller: emailController,
                 cText: "Email Address",
                 cHint: "Input Email Here"),
             CustomForm(
-                controllerForm: passwordController,
+                controller: passwordController,
                 cText: "Password",
                 cHint: "Input Password Here",
                 isPassword: true),
             CustomForm(
-                controllerForm: hobbyController,
+                controller: hobbyController,
                 cText: "Hobby",
                 cHint: "Input Hobby Here"),
             submitButton(),

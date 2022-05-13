@@ -30,7 +30,9 @@ class BonusPage extends StatelessWidget {
               ),
               CustomButton(
                 cText: "Start Fly Now",
-                cDestination: '/mainpage',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/mainpage');
+                },
                 cMargin: EdgeInsets.only(top: 50),
               ),
 

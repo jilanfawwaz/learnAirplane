@@ -372,7 +372,9 @@ class ChooseSeats extends StatelessWidget {
                 mainContent(),
                 CustomButton(
                   cText: "Continue Checkout",
-                  cDestination: '/checkout',
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/checkout');
+                  },
                   cMargin: EdgeInsets.only(
                     top: 30,
                   ),

@@ -398,7 +398,9 @@ class CheckOut extends StatelessWidget {
               paymentDetail(),
               CustomButton(
                 cText: "Pay Now",
-                cDestination: '/success',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/success');
+                },
                 cWidth: double.infinity,
                 cMargin: EdgeInsets.only(bottom: 30),
               ),

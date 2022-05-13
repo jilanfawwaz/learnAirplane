@@ -42,7 +42,9 @@ class SuccessPage extends StatelessWidget {
             ),
             CustomButton(
               cText: "My Bookings",
-              cDestination: '/',
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
               cMargin: EdgeInsets.only(
                 top: 50,
               ),

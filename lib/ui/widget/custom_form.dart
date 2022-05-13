@@ -5,14 +5,14 @@ class CustomForm extends StatelessWidget {
   final String cText;
   final String cHint;
   final bool isPassword;
-  final TextEditingController controllerForm;
+  final TextEditingController controller;
 
   const CustomForm({
     Key? key,
     required this.cText,
     required this.cHint,
     this.isPassword = false,
-    required this.controllerForm,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class CustomForm extends StatelessWidget {
           TextFormField(
             cursorColor: cBlackColor,
             obscureText: isPassword,
-            controller: controllerForm,
+            controller: controller,
             decoration: InputDecoration(
               hintText: cHint,
               border: OutlineInputBorder(
