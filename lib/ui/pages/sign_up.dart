@@ -4,7 +4,11 @@ import 'package:learn_app_plane/ui/widget/custom_button.dart';
 import 'package:learn_app_plane/ui/widget/custom_form.dart';
 
 class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+  SignUp({Key? key}) : super(key: key);
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+  TextEditingController hobbyController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -111,13 +115,23 @@ class SignUp extends StatelessWidget {
         ),
         child: Column(
           children: [
-            CustomForm(cText: "Full Name", cHint: "Input Name Here"),
-            CustomForm(cText: "Email Address", cHint: "Input Email Here"),
             CustomForm(
+                controllerForm: nameController,
+                cText: "Full Name",
+                cHint: "Input Name Here"),
+            CustomForm(
+                controllerForm: emailController,
+                cText: "Email Address",
+                cHint: "Input Email Here"),
+            CustomForm(
+                controllerForm: passwordController,
                 cText: "Password",
                 cHint: "Input Password Here",
                 isPassword: true),
-            CustomForm(cText: "Hobby", cHint: "Input Hobby Here"),
+            CustomForm(
+                controllerForm: hobbyController,
+                cText: "Hobby",
+                cHint: "Input Hobby Here"),
             CustomButton(
               cText: "Get Started",
               cDestination: '/bonuspage',
