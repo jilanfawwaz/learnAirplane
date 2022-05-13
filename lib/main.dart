@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_app_plane/cubit/auth_cubit.dart';
 import 'package:learn_app_plane/cubit/page_cubit.dart';
 import 'package:learn_app_plane/ui/pages/bonus_page.dart';
 import 'package:learn_app_plane/ui/pages/checkout_page.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => PageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AuthCubit(),
         ),
       ],
       child: MaterialApp(
