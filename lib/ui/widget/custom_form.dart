@@ -28,6 +28,8 @@ class CustomForm extends StatelessWidget {
           ),
           TextFormField(
             enableSuggestions: false,
+            autocorrect: false,
+            
             cursorColor: cBlackColor,
             obscureText: isPassword,
             controller: controller,
