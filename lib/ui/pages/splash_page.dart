@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 
@@ -13,13 +14,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-  
-    Timer(
-      Duration(seconds: 3),
-      () {
-        Navigator.pushNamed(context, '/getstarted');
-      },
-    );
+    User? user = FirebaseAuth.instance.currentUser;
+
+    Timer(Duration(seconds: 3), () {
+      if (user == null) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/getstarted', (route) => false);
+      } else {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/mainpage', (route) => false);
+      }
+    });
     super.initState();
   }
 
@@ -44,7 +49,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-                  
               Text(
                 "AIRPLANE",
                 style: cWhiteTheme32.copyWith(

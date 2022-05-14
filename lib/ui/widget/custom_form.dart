@@ -27,6 +27,7 @@ class CustomForm extends StatelessWidget {
             height: 6,
           ),
           TextFormField(
+            enableSuggestions: false,
             cursorColor: cBlackColor,
             obscureText: isPassword,
             controller: controller,
