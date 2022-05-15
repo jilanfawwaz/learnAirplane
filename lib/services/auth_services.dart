@@ -27,7 +27,7 @@ class AuthService {
 
       return user;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -35,7 +35,7 @@ class AuthService {
     try {
       await _auth.signOut();
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

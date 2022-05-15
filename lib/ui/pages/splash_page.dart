@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_app_plane/cubit/auth_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,6 +23,7 @@ class _HomePageState extends State<HomePage> {
         Navigator.pushNamedAndRemoveUntil(
             context, '/getstarted', (route) => false);
       } else {
+        context.read<AuthCubit>().getCurrentUser(user.uid);
         Navigator.pushNamedAndRemoveUntil(
             context, '/mainpage', (route) => false);
       }

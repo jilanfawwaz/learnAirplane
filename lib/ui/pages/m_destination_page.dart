@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_app_plane/cubit/auth_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_main_card.dart';
 import 'package:learn_app_plane/ui/widget/custom_main_card2.dart';
@@ -9,42 +11,50 @@ class DestinationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget headTitle() {
-      return Row(
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      return BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state is AuthSuccess) {
+            return Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Howdy, \nKezia Anneeeeeeeeeeeeeeeeeeeeeeeee",
-                  style: cBlackThemeHeadline24,
-                  overflow: TextOverflow.fade,
-                  //maxLines: 3,
-                  softWrap: false,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Howdy, \n${state.user.name}",
+                        style: cBlackThemeHeadline24,
+                        overflow: TextOverflow.fade,
+                        //maxLines: 3,
+                        softWrap: false,
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        "Where to fly today?",
+                        style: cGreyThemeExplainer16,
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 6,
-                ),
-                Text(
-                  "Where to fly today?",
-                  style: cGreyThemeExplainer16,
+                SizedBox(width: 30),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/image12Profile.png"),
+                    ),
+                  ),
                 ),
               ],
-            ),
-          ),
-          SizedBox(width: 30),
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              image: DecorationImage(
-                image: AssetImage("assets/images/image12Profile.png"),
-              ),
-            ),
-          ),
-        ],
+            );
+          } else {
+            return SizedBox();
+          }
+        },
       );
     }
 
