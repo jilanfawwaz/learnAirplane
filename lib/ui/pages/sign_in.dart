@@ -5,8 +5,8 @@ import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 import 'package:learn_app_plane/ui/widget/custom_form.dart';
 
-class SignUp extends StatelessWidget {
-  SignUp({Key? key}) : super(key: key);
+class SignIn extends StatelessWidget {
+  SignIn({Key? key}) : super(key: key);
 
   TextEditingController nameController = TextEditingController(text: '');
   TextEditingController emailController = TextEditingController(text: '');
@@ -21,7 +21,7 @@ class SignUp extends StatelessWidget {
           top: 30,
         ),
         child: Text(
-          "Join us and get \nyour next journey",
+          "Sign in with your existing account",
           style: cBlackThemeHeadline24,
         ),
       );
@@ -157,10 +157,6 @@ class SignUp extends StatelessWidget {
         child: Column(
           children: [
             CustomForm(
-                controller: nameController,
-                cText: "Full Name",
-                cHint: "Input Name Here"),
-            CustomForm(
                 controller: emailController,
                 cText: "Email Address",
                 cHint: "Input Email Here"),
@@ -169,25 +165,21 @@ class SignUp extends StatelessWidget {
                 cText: "Password",
                 cHint: "Input Password Here",
                 isPassword: true),
-            CustomForm(
-                controller: hobbyController,
-                cText: "Hobby",
-                cHint: "Input Hobby Here"),
             submitButton(),
           ],
         ),
       );
     }
 
-    Widget signInButton() {
+    Widget termsAndConditions() {
       return Container(
         margin: EdgeInsets.only(top: 50),
         child: TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/signin');
+            Navigator.pushNamed(context, '/signup');
           },
           child: Text(
-            "Have an Account? Sign In",
+            'Don\'t Have an account? Sign Up',
             style: cGreyThemeExplainer16.copyWith(
                 decoration: TextDecoration.underline),
           ),
@@ -203,7 +195,7 @@ class SignUp extends StatelessWidget {
           children: [
             title(),
             inputForm(),
-            signInButton(),
+            termsAndConditions(),
           ],
         ),
       ),

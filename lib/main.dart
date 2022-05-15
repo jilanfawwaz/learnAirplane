@@ -10,6 +10,7 @@ import 'package:learn_app_plane/ui/pages/choose_seats2.dart';
 import 'package:learn_app_plane/ui/pages/details_page.dart';
 import 'package:learn_app_plane/ui/pages/get_started.dart';
 import 'package:learn_app_plane/ui/pages/main_page.dart';
+import 'package:learn_app_plane/ui/pages/sign_in.dart';
 import 'package:learn_app_plane/ui/pages/sign_up.dart';
 import 'package:learn_app_plane/ui/pages/splash_page.dart';
 import 'package:learn_app_plane/ui/pages/success_page.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => const HomePage(),
+          '/': (context) => HomePage(),
           '/getstarted': (context) => const GetStarted(),
           '/signup': (context) => SignUp(),
           '/bonuspage': (context) => const BonusPage(),
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           '/chooseseats': (context) => const ChooseSeats(),
           '/checkout': (context) => const CheckOut(),
           '/success': (context) => const SuccessPage(),
+          '/signin': (context) => SignIn(),
         },
       ),
     );
