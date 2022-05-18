@@ -31,6 +31,24 @@ class AuthService {
     }
   }
 
+  Future<UserModel> signIn({
+    required String email,
+    required String password,
+  }) async {
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    try {
+      UserModel user =
+          await UserService().getUserById(userCredential.user!.uid);
+
+      return user;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> signOut() async {
     try {
       await _auth.signOut();

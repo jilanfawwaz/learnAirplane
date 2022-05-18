@@ -8,10 +8,8 @@ import 'package:learn_app_plane/ui/widget/custom_form.dart';
 class SignIn extends StatelessWidget {
   SignIn({Key? key}) : super(key: key);
 
-  TextEditingController nameController = TextEditingController(text: '');
   TextEditingController emailController = TextEditingController(text: '');
   TextEditingController passwordController = TextEditingController(text: '');
-  TextEditingController hobbyController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +109,7 @@ class SignIn extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthSuccess) {
               Navigator.pushNamedAndRemoveUntil(
-                  context, '/bonuspage', (route) => false);
+                  context, '/mainpage', (route) => false);
             } else if (state is AuthFailed) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 backgroundColor: cRedColor,
@@ -129,11 +127,9 @@ class SignIn extends StatelessWidget {
             return CustomButton(
               cText: "Get Started",
               onPressed: () {
-                context.read<AuthCubit>().signUp(
-                    name: nameController.text,
+                context.read<AuthCubit>().signIn(
                     email: emailController.text,
-                    password: passwordController.text,
-                    hobby: hobbyController.text);
+                    password: passwordController.text);
               },
               cWidth: 287,
               cMargin: EdgeInsets.only(
