@@ -66,7 +66,7 @@ class DestinationPage extends StatelessWidget {
             CustomMainCard(
               urlImage: "assets/images/image2Destination.png",
               destination: "Lake Ciliwung Mamakero",
-              location: "Tangerang city of the badass",
+              location: "ra",
               rating: 4.8,
             ),
             CustomMainCard(

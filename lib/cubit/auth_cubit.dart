@@ -43,7 +43,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void getCurrentUser(String id) async {
+  void getCurrentUser(String id) async { //dipanggil di halaman splashPage, kalau app direstart, mengambil data dari firebase berdasarkan id yang aktif
     try {
       UserModel user = await UserService().getUserById(id);
       emit(AuthSuccess(user));
