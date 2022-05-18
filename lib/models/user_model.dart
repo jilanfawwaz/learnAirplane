@@ -19,5 +19,6 @@ class UserModel extends Equatable {
   });
 
   @override
-  List<Object?> get props => [id, name, email, hobby, balance];
+  List<Object?> get props => [id, name, email, hobby, balance]; 
+  // menyimpan data ke dalam list object
 }
