@@ -17,7 +17,7 @@ class DestinationModel extends Equatable {
     required this.urlImage,
   });
 
-  factory DestinationModel.fromJson(String id, Map<String, dynamic> json) =>
+  factory DestinationModel.fromJson(String id, Map<String, dynamic> json) => //method menyimpan file dari json, dan di parsing menjadi beberapa tabel (destination, location, dll)
       DestinationModel(
         id: id,
         destination: json['destination'],
@@ -26,6 +26,18 @@ class DestinationModel extends Equatable {
         rating: json['rating'],
         price: json['price'],
       );
+
+  /*factory DestinationModel.fromJson(String id, Map<String, dynamic> json) {
+    //method menyimpan file dari json, dan di parsing menjadi beberapa tabel (destination, location, dll)
+    return DestinationModel(
+      id: id,
+      destination: json['destination'],
+      location: json['location'],
+      urlImage: json['urlImage'],
+      rating: json['rating'],
+      price: json['price'],
+    );
+  }*/
 
   @override
   List<Object?> get props =>
