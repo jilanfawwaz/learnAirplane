@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_app_plane/cubit/auth_cubit.dart';
+import 'package:learn_app_plane/cubit/destination_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_main_card.dart';
 import 'package:learn_app_plane/ui/widget/custom_main_card2.dart';
 
-class DestinationPage extends StatelessWidget {
+import '../../models/destination_model.dart';
+
+class DestinationPage extends StatefulWidget {
   const DestinationPage({Key? key}) : super(key: key);
+
+  @override
+  State<DestinationPage> createState() => _DestinationPageState();
+}
+
+class _DestinationPageState extends State<DestinationPage> {
+  @override
+  void initState() {
+    context.read<DestinationCubit>().fetchDestionation();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,41 +72,13 @@ class DestinationPage extends StatelessWidget {
       );
     }
 
-    Widget cardHorizontal() {
+    Widget cardHorizontal(List<DestinationModel> destination) {
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: [
-            CustomMainCard(
-              urlImage: "assets/images/image2Destination.png",
-              destination: "Lake Ciliwung Mamakero",
-              location: "ra",
-              rating: 4.8,
-            ),
-            CustomMainCard(
-              urlImage: "assets/images/image3Destination.png",
-              destination: "White Houses",
-              location: "Spain",
-            ),
-            CustomMainCard(
-              urlImage: "assets/images/image4Destination.png",
-              destination: "Hill Heyo",
-              location: "Monaco",
-              rating: 4.7,
-            ),
-            CustomMainCard(
-              urlImage: "assets/images/image5Destination.png",
-              destination: "Menarra",
-              location: "Japan",
-              rating: 5.0,
-            ),
-            CustomMainCard(
-              urlImage: "assets/images/image6Destination.png",
-              destination: "Payung Teduh",
-              location: "Singapore",
-              rating: 4.7,
-            ),
-          ],
+          children: destination.map((DestinationModel e) {
+            return CustomMainCard(e);
+          }).toList(),
         ),
       );
     }
@@ -137,45 +123,62 @@ class DestinationPage extends StatelessWidget {
       );
     }
 
-    return ListView(
-      padding: EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 30,
-      ),
-
-      //crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        headTitle(),
-        SizedBox(
-          height: 30,
-        ),
-        cardHorizontal(),
-        SizedBox(
-          height: 30,
-        ),
-        Text(
-          "New This Year",
-          style: cBlackThemeSubHeadline18,
-        ),
-        /*Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              //width: 100,
-              height: 50,
-              decoration: BoxDecoration(
-                color: cPurpleColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              //child: Text("HALO"),
+    return BlocConsumer<DestinationCubit, DestinationState>(
+      listener: (context, state) {
+        if (state is DestinationFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: cRedColor,
+            content: Text(state.error),
+          ));
+        }
+      },
+      builder: (context, state) {
+        if (state is DestionationSuccess) {
+          return ListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 30,
             ),
-          ],
-        ),*/
-        SizedBox(
-          height: 16,
-        ),
-        cardVertical(),
-      ],
+
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              headTitle(),
+              SizedBox(
+                height: 30,
+              ),
+              cardHorizontal(state.destinations),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                "New This Year",
+                style: cBlackThemeSubHeadline18,
+              ),
+              /*Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  //width: 100,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: cPurpleColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  //child: Text("HALO"),
+                ),
+              ],
+            ),*/
+              SizedBox(
+                height: 16,
+              ),
+              cardVertical(),
+            ],
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

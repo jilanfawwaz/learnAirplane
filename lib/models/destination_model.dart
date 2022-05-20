@@ -17,14 +17,17 @@ class DestinationModel extends Equatable {
     required this.urlImage,
   });
 
-  factory DestinationModel.fromJson(String id, Map<String, dynamic> json) => //method menyimpan file dari json, dan di parsing menjadi beberapa tabel (destination, location, dll)
+  factory DestinationModel.fromJson(
+          String id,
+          Map<String, dynamic>
+              json) => //method menyimpan file dari json, dan di parsing menjadi beberapa tabel (destination, location, dll)
       DestinationModel(
         id: id,
         destination: json['destination'],
         location: json['location'],
         urlImage: json['urlImage'],
-        rating: json['rating'],
         price: json['price'],
+        rating: json['nilai'].toDouble(),
       );
 
   /*factory DestinationModel.fromJson(String id, Map<String, dynamic> json) {

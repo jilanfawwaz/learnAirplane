@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 
 class CustomMainCard extends StatelessWidget {
-  final String urlImage;
-  final String destination;
-  final String location;
-  final double rating;
-  const CustomMainCard({
+  final DestinationModel destination;
+
+  const CustomMainCard(
+    this.destination, {
     Key? key,
-    required this.urlImage,
-    required this.destination,
-    required this.location,
-    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -43,7 +39,7 @@ class CustomMainCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(urlImage),
+                  image: NetworkImage(destination.urlImage),
                 ),
               ),
               child: Align(
@@ -67,7 +63,7 @@ class CustomMainCard extends StatelessWidget {
                         height: 18,
                       ),
                       Text(
-                        rating.toString(),
+                        destination.rating.toString(),
                         style: cBlackTheme14,
                       ),
                     ],
@@ -83,7 +79,7 @@ class CustomMainCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    destination,
+                    destination.destination,
                     style: cBlackThemeCard18,
                     overflow: TextOverflow.fade,
                     //maxLines: 1,
@@ -93,7 +89,7 @@ class CustomMainCard extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    location,
+                    destination.location,
                     style: cGreyThemeCard14,
                     overflow: TextOverflow.fade,
                     //maxLines: 1,
