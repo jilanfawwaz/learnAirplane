@@ -11,13 +11,12 @@ class DestinationInitial extends DestinationState {}
 
 class DestinationLoading extends DestinationState {}
 
-class DestionationSuccess extends DestinationState {
+class DestinationSuccess extends DestinationState {
   final List<DestinationModel> destinations;
 
-  DestionationSuccess(this.destinations);
+  DestinationSuccess(this.destinations);
 
   @override
-  // TODO: implement props
   List<Object> get props => [destinations];
 }
 
@@ -27,6 +26,5 @@ class DestinationFailed extends DestinationState {
   DestinationFailed(this.error);
 
   @override
-  // TODO: implement props
   List<Object> get props => [error];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_app_plane/cubit/auth_cubit.dart';
+import 'package:learn_app_plane/cubit/destination2_cubit.dart';
 import 'package:learn_app_plane/cubit/destination_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_main_card.dart';
@@ -19,6 +20,7 @@ class _DestinationPageState extends State<DestinationPage> {
   @override
   void initState() {
     context.read<DestinationCubit>().fetchDestionation();
+    context.read<Destination2Cubit>().fetchDestination();
     super.initState();
   }
 
@@ -71,6 +73,17 @@ class _DestinationPageState extends State<DestinationPage> {
         },
       );
     }
+
+   /* Widget cardHorizontal(List<DestinationModel> destination) {
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: destination.map((DestinationModel e) {
+            return CustomMainCard(e);
+          }).toList(),
+        ),
+      );
+    }*/
 
     Widget cardHorizontal(List<DestinationModel> destination) {
       return SingleChildScrollView(
@@ -133,7 +146,7 @@ class _DestinationPageState extends State<DestinationPage> {
         }
       },
       builder: (context, state) {
-        if (state is DestionationSuccess) {
+        if (state is DestinationSuccess) {
           return ListView(
             padding: EdgeInsets.symmetric(
               horizontal: 24,

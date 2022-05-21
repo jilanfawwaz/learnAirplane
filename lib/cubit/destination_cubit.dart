@@ -16,7 +16,7 @@ class DestinationCubit extends Cubit<DestinationState> {
       List<DestinationModel> destination =
           await DestinationServices().fetchDestination();
 
-      emit(DestionationSuccess(destination));
+      emit(DestinationSuccess(destination));
     } catch (e) {
       emit(DestinationFailed(e.toString()));
     }
