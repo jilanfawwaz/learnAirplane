@@ -74,7 +74,7 @@ class _DestinationPageState extends State<DestinationPage> {
       );
     }
 
-   /* Widget cardHorizontal(List<DestinationModel> destination) {
+    /* Widget cardHorizontal(List<DestinationModel> destination) {
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -96,43 +96,12 @@ class _DestinationPageState extends State<DestinationPage> {
       );
     }
 
-    Widget cardVertical() {
+    Widget cardVertical(List<DestinationModel> destination) {
       return Column(
         //mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          CustomMainCard2(
-            urlImage: "assets/images/image7Destination.png",
-            destination: "Danau Beratan Beratan Beratan Beratan",
-            location: "Singaraja Beratan Beratan Beratan Beratan",
-            rating: 4.5,
-          ),
-          CustomMainCard2(
-            urlImage: "assets/images/image8Destination.png",
-            destination: "Sydney Opera",
-            location: "Australia",
-            rating: 4.7,
-          ),
-          CustomMainCard2(
-            urlImage: "assets/images/image9Destination.png",
-            destination: "Roma",
-            location: "Italy",
-          ),
-          CustomMainCard2(
-            urlImage: "assets/images/image10Destination.png",
-            destination: "Payung Teduh",
-            location: "Singapore",
-            rating: 4.5,
-          ),
-          CustomMainCard2(
-            urlImage: "assets/images/image11Destination.png",
-            destination: "Hill Hey",
-            location: "Monaco",
-            rating: 4.7,
-          ),
-          SizedBox(
-            height: 70,
-          )
-        ],
+        children: destination.map((DestinationModel e) {
+          return CustomMainCard2(e);
+        }).toList(),
       );
     }
 
@@ -184,7 +153,7 @@ class _DestinationPageState extends State<DestinationPage> {
               SizedBox(
                 height: 16,
               ),
-              cardVertical(),
+              cardVertical(state.destinations),
             ],
           );
         }

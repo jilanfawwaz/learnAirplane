@@ -1,21 +1,13 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 
 class CustomMainCard2 extends StatelessWidget {
-  final String urlImage;
-  final String destination;
-  final String location;
-  final double rating;
+  final DestinationModel destination;
 
-  const CustomMainCard2({
-    Key? key,
-    required this.urlImage,
-    required this.destination,
-    required this.location,
-    this.rating = 0.0,
-  }) : super(key: key);
+  const CustomMainCard2(this.destination, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +37,7 @@ class CustomMainCard2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(urlImage),
+                  image: NetworkImage(destination.urlImage),
                 ),
               ),
             ),
@@ -57,14 +49,14 @@ class CustomMainCard2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    destination,
+                    destination.destination,
                     style: cBlackThemeCard18,
                     overflow: TextOverflow.fade,
                     softWrap: false,
                   ),
                   SizedBox(height: 5),
                   Text(
-                    location,
+                    destination.location,
                     style: cGreyThemeCard14,
                     overflow: TextOverflow.fade,
                     softWrap: false,
@@ -88,7 +80,7 @@ class CustomMainCard2 extends StatelessWidget {
                 ),
                 SizedBox(width: 5),
                 Text(
-                  rating.toString(),
+                  destination.rating.toString(),
                   style: cBlackTheme14,
                 ),
               ],
