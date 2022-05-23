@@ -7,7 +7,10 @@ import 'package:learn_app_plane/shared/theme.dart';
 class CustomMainCard2 extends StatelessWidget {
   final DestinationModel destination;
 
-  const CustomMainCard2(this.destination, {Key? key}) : super(key: key);
+  const CustomMainCard2(
+    this.destination, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

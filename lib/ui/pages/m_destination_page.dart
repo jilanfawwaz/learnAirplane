@@ -99,9 +99,20 @@ class _DestinationPageState extends State<DestinationPage> {
     Widget cardVertical(List<DestinationModel> destination) {
       return Column(
         //mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: destination.map((DestinationModel e) {
-          return CustomMainCard2(e);
-        }).toList(),
+        children: [
+          Column(
+            children: [
+              Column(
+                children: destination.map((DestinationModel e) {
+                  return CustomMainCard2(e);
+                }).toList(),
+              ),
+              SizedBox(
+                height: 70,
+              ),
+            ],
+          ),
+        ],
       );
     }
 

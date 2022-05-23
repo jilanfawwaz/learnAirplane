@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           '/signup': (context) => SignUp(),
           '/bonuspage': (context) => const BonusPage(),
           '/mainpage': (context) => const MainPage(),
-          '/detailspage': (context) => const DetailsPage(),
+          //'/detailspage': (context) => const DetailsPage(),
           '/chooseseats': (context) => const ChooseSeats(),
           '/checkout': (context) => const CheckOut(),
           '/success': (context) => const SuccessPage(),

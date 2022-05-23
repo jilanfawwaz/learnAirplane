@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  final DestinationModel destination;
+
+  const DetailsPage(
+    this.destination, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class DetailsPage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage("assets/images/image13BackgroundCiliwung.png"),
+            image: NetworkImage(destination.urlImage),
           ),
         ),
       );
@@ -117,13 +123,13 @@ class DetailsPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Lake Ciliwung Ciliwungsss",
+                        destination.destination,
                         style: cWhiteTheme24Semibold,
                         overflow: TextOverflow.fade,
                         softWrap: false,
                       ),
                       Text(
-                        "Tangerang",
+                        destination.location,
                         style: cWhiteTheme16,
                       ),
                     ],
@@ -141,7 +147,7 @@ class DetailsPage extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     Text(
-                      "4.8",
+                      destination.rating.toString(),
                       style: cWhiteTheme14Medium,
                     ),
                   ],
