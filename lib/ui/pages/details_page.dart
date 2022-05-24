@@ -167,188 +167,186 @@ class DetailsPage extends StatelessWidget {
                 color: cWhiteColor,
                 borderRadius: BorderRadius.circular(18),
               ),
-              child: Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "About",
-                      style: cBlackTheme16Semibold,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "About",
+                    style: cBlackTheme16Semibold,
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    "destination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.about",
+                    style: cBlackTheme14Regular.copyWith(
+                        height: 1.8), //lineHeight dibagi fontSize
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Photos",
+                          style: cBlackTheme16Semibold,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                top: 6,
+                                right: 16,
+                              ),
+                              width: 70,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                color: cPurpleColor,
+                                borderRadius: BorderRadius.circular(18),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/images/image14Photo.png"),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                top: 6,
+                                right: 16,
+                              ),
+                              width: 70,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                color: cPurpleColor,
+                                borderRadius: BorderRadius.circular(18),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/images/image15Photo.png"),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                top: 6,
+                                right: 16,
+                              ),
+                              width: 70,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                color: cPurpleColor,
+                                borderRadius: BorderRadius.circular(18),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/images/image16Photo.png"),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 6,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Interest",
+                          style: cBlackTheme16Semibold,
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/logoCheck.png",
+                                        height: 16,
+                                        width: 16,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        "Kids Park",
+                                        style: cBlackTheme14Regular,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/logoCheck.png",
+                                        height: 16,
+                                        width: 16,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        "City Museum",
+                                        style: cBlackTheme14Regular,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 23,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/logoCheck.png",
+                                        height: 16,
+                                        width: 16,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        "Kids Park",
+                                        style: cBlackTheme14Regular,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/logoCheck.png",
+                                        height: 16,
+                                        width: 16,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        "City Museum",
+                                        style: cBlackTheme14Regular,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                    Text(
-                      destination.about,
-                      style: cBlackTheme14Regular.copyWith(
-                          height: 1.8), //lineHeight dibagi fontSize
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Photos",
-                            style: cBlackTheme16Semibold,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                  top: 6,
-                                  right: 16,
-                                ),
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: cPurpleColor,
-                                  borderRadius: BorderRadius.circular(18),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        "assets/images/image14Photo.png"),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  top: 6,
-                                  right: 16,
-                                ),
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: cPurpleColor,
-                                  borderRadius: BorderRadius.circular(18),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        "assets/images/image15Photo.png"),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  top: 6,
-                                  right: 16,
-                                ),
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: cPurpleColor,
-                                  borderRadius: BorderRadius.circular(18),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        "assets/images/image16Photo.png"),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Interest",
-                            style: cBlackTheme16Semibold,
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(top: 10),
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          "assets/images/logoCheck.png",
-                                          height: 16,
-                                          width: 16,
-                                        ),
-                                        SizedBox(width: 6),
-                                        Text(
-                                          "Kids Park",
-                                          style: cBlackTheme14Regular,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(top: 10),
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          "assets/images/logoCheck.png",
-                                          height: 16,
-                                          width: 16,
-                                        ),
-                                        SizedBox(width: 6),
-                                        Text(
-                                          "City Museum",
-                                          style: cBlackTheme14Regular,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 23,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(top: 10),
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          "assets/images/logoCheck.png",
-                                          height: 16,
-                                          width: 16,
-                                        ),
-                                        SizedBox(width: 6),
-                                        Text(
-                                          "Kids Park",
-                                          style: cBlackTheme14Regular,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(top: 10),
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          "assets/images/logoCheck.png",
-                                          height: 16,
-                                          width: 16,
-                                        ),
-                                        SizedBox(width: 6),
-                                        Text(
-                                          "City Museum",
-                                          style: cBlackTheme14Regular,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Container(
