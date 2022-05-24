@@ -5,6 +5,7 @@ class DestinationModel extends Equatable {
   final String destination;
   final String location;
   final String urlImage;
+  final String about;
   final double rating;
   final int price;
 
@@ -14,6 +15,7 @@ class DestinationModel extends Equatable {
     required this.location,
     this.rating = 0.0,
     this.price = 0,
+    this.about = "",
     required this.urlImage,
   });
 
@@ -26,6 +28,7 @@ class DestinationModel extends Equatable {
         destination: json['destination'],
         location: json['location'],
         urlImage: json['urlImage'],
+        about: json['about'],
         price: json['price'],
         rating: json['nilai'].toDouble(),
       );
@@ -44,5 +47,5 @@ class DestinationModel extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, destination, location, rating, price, urlImage];
+      [id, destination, location, rating, price, urlImage, about];
 }

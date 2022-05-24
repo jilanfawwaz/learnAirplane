@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
+import 'package:learn_app_plane/ui/pages/details_page.dart';
 
 class CustomMainCard2 extends StatelessWidget {
   final DestinationModel destination;
@@ -16,7 +17,12 @@ class CustomMainCard2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detailspage');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailsPage(destination),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 16),

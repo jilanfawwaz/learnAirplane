@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
@@ -178,7 +179,7 @@ class DetailsPage extends StatelessWidget {
                       height: 6,
                     ),
                     Text(
-                      "Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.",
+                      destination.about,
                       style: cBlackTheme14Regular.copyWith(
                           height: 1.8), //lineHeight dibagi fontSize
                     ),
@@ -359,7 +360,11 @@ class DetailsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "IDR 2.500.000",
+                          NumberFormat.currency(
+                            locale: 'id',
+                            symbol: "USD ",
+                            decimalDigits: 0,
+                          ).format(destination.price),
                           style: cBlackThemeCard18,
                         ),
                         Text(
