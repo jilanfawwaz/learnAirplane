@@ -17,6 +17,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget buildContent(int index) {
+      print("mainPage index: $index");
       switch (index) {
         case 0:
           return DestinationPage();
@@ -27,7 +28,7 @@ class MainPage extends StatelessWidget {
         case 3:
           return SettingPage();
         default:
-          return HomePage();
+          return DestinationPage();
       }
     }
 
