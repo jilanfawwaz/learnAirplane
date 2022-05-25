@@ -5,11 +5,12 @@ import 'package:learn_app_plane/cubit/auth_cubit.dart';
 import 'package:learn_app_plane/cubit/destination2_cubit.dart';
 import 'package:learn_app_plane/cubit/destination_cubit.dart';
 import 'package:learn_app_plane/cubit/page_cubit.dart';
+import 'package:learn_app_plane/cubit/seat_cubit.dart';
 import 'package:learn_app_plane/ui/pages/bonus_page.dart';
 import 'package:learn_app_plane/ui/pages/checkout_page.dart';
 //import 'package:learn_app_plane/ui/pages/choose_seats.dart';
 import 'package:learn_app_plane/ui/pages/choose_seats2.dart';
-import 'package:learn_app_plane/ui/pages/details_page.dart';
+//import 'package:learn_app_plane/ui/pages/details_page.dart';
 import 'package:learn_app_plane/ui/pages/get_started.dart';
 import 'package:learn_app_plane/ui/pages/main_page.dart';
 import 'package:learn_app_plane/ui/pages/sign_in.dart';
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => Destination2Cubit(),
+        ),
+        BlocProvider(
+          create: (context) => SeatCubit(),
         ),
       ],
       child: MaterialApp(

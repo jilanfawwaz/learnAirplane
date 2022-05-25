@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_app_plane/cubit/seat_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 
 class SeatItem extends StatelessWidget {
   final int indexStatus;
-  const SeatItem({Key? key, required this.indexStatus}) : super(key: key);
+  final String id;
+
+  const SeatItem({
+    Key? key,
+    required this.indexStatus,
+    required this.id,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +57,25 @@ class SeatItem extends StatelessWidget {
       }
     }
 
-    return Container(
-      width: 48,
-      height: 48,
-      margin: EdgeInsets.only(top: 16),
-      decoration: BoxDecoration(
-        color: backgroundColor(),
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(
-          color: border(),
-          width: 2,
+    return GestureDetector(
+      onTap: () {
+        context.read<SeatCubit>().selectSeat(id);
+      },
+      child: Container(
+        width: 48,
+        height: 48,
+        margin: EdgeInsets.only(top: 16),
+        decoration: BoxDecoration(
+          color: backgroundColor(),
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: border(),
+            width: 2,
+          ),
         ),
-      ),
-      child: Center(
-        child: textYou(),
+        child: Center(
+          child: textYou(),
+        ),
       ),
     );
   }

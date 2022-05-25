@@ -178,7 +178,7 @@ class DetailsPage extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    "destination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.aboutdestination.about",
+                    destination.about,
                     style: cBlackTheme14Regular.copyWith(
                         height: 1.8), //lineHeight dibagi fontSize
                   ),
@@ -360,7 +360,7 @@ class DetailsPage extends StatelessWidget {
                         Text(
                           NumberFormat.currency(
                             locale: 'id',
-                            symbol: "USD ",
+                            symbol: "IDR ",
                             decimalDigits: 0,
                           ).format(destination.price),
                           style: cBlackThemeCard18,
