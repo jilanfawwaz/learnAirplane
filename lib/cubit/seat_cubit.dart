@@ -23,11 +23,12 @@ class SeatCubit extends Cubit<List<String>> {
     }
   }
 
-
   void selectSeat(String id) {
     print("state sebelumnya : $state");
     if (!isSelected(id)) {
       state.add(id);
+    } else {
+      state.remove(id);
     }
 
     emit(state);
