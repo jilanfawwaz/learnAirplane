@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:learn_app_plane/cubit/seat_cubit.dart';
 import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
+import 'package:learn_app_plane/ui/pages/checkout_page.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 import 'package:learn_app_plane/ui/widget/seat_item.dart';
 
@@ -392,7 +393,12 @@ class ChooseSeats extends StatelessWidget {
                 CustomButton(
                   cText: "Continue Checkout",
                   onPressed: () {
-                    Navigator.pushNamed(context, '/checkout');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CheckOut(destination),
+                      ),
+                    );
                   },
                   cMargin: EdgeInsets.only(
                     top: 30,

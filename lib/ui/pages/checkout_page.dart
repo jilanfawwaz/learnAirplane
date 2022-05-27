@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:learn_app_plane/cubit/seat_cubit.dart';
+import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 
 class CheckOut extends StatelessWidget {
-  const CheckOut({Key? key}) : super(key: key);
+  final DestinationModel destination;
+  const CheckOut(this.destination, {Key? key}) : super(key: key);
 
   Widget headerTitle() {
     return Column(
@@ -45,7 +50,7 @@ class CheckOut extends StatelessWidget {
                   style: cBlackThemeHeadline24,
                 ),
                 Text(
-                  "Ciliwung",
+                  destination.location,
                   style: cGreyThemeCard14,
                 ),
               ],
@@ -69,249 +74,267 @@ class CheckOut extends StatelessWidget {
         color: cWhiteColor,
         borderRadius: BorderRadius.circular(18),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+      child: BlocBuilder<SeatCubit, List<String>>(
+        builder: (context, state) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: 16,
-                ),
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: cPurpleColor,
-                  borderRadius: BorderRadius.circular(18),
-                  image: DecorationImage(
-                      image: AssetImage(
-                          "assets/images/image13BackgroundCiliwung.png"),
-                      fit: BoxFit.cover),
-                ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                      right: 16,
+                    ),
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: cPurpleColor,
+                      borderRadius: BorderRadius.circular(18),
+                      image: DecorationImage(
+                          image: NetworkImage(destination.urlImage),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          destination.destination,
+                          style: cBlackThemeCard18,
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          destination.location,
+                          style: cGreyThemeCard14,
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 7),
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Image.asset(
+                        "assets/images/logoStar.png",
+                        width: 18,
+                        height: 18,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        destination.rating.toString(),
+                        style: cBlackTheme14,
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Booking Details",
+                style: cBlackTheme16Semibold,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16, top: 10),
+                child: Row(
                   children: [
-                    Text(
-                      "Lake Ciliwung Ciliwung Ciliwung",
-                      style: cBlackThemeCard18,
-                      overflow: TextOverflow.fade,
-                      softWrap: false,
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
                     ),
-                    SizedBox(
-                      height: 5,
+                    Expanded(
+                      child: Text(
+                        "Traveler",
+                        style: cBlackTheme14Regular,
+                      ),
                     ),
                     Text(
-                      "Tangerang Tangerang Tangerang",
-                      style: cGreyThemeCard14,
-                      overflow: TextOverflow.fade,
-                      softWrap: false,
+                      "${state.length} Persons",
+                      style: cBlackTheme14Semibold,
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: 7),
-              Row(
-                //mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Image.asset(
-                    "assets/images/logoStar.png",
-                    width: 18,
-                    height: 18,
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    "4.1",
-                    style: cBlackTheme14,
-                  ),
-                ],
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Seat",
+                        style: cBlackTheme14Regular,
+                      ),
+                    ),
+                    Text(
+                      state.join(', '),
+                      style: cBlackTheme14Semibold,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Insurance",
+                        style: cBlackTheme14Regular,
+                      ),
+                    ),
+                    Text(
+                      "YES",
+                      style: cGreenTheme14Semibold,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Refundable",
+                        style: cBlackTheme14Regular,
+                      ),
+                    ),
+                    Text(
+                      "NO",
+                      style: cRedTheme14Semibold,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "VAT",
+                        style: cBlackTheme14Regular,
+                      ),
+                    ),
+                    Text(
+                      "45%",
+                      style: cBlackTheme14Semibold,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Price",
+                        style: cBlackTheme14Regular,
+                      ),
+                    ),
+                    Text(
+                      NumberFormat.currency(
+                        locale: 'id',
+                        symbol: 'IDR ',
+                        decimalDigits: 0,
+                      ).format(destination.price),
+                      style: cBlackTheme14Semibold,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 16,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/logoCheck.png"))),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Grand Total",
+                        style: cBlackTheme14Regular,
+                      ),
+                    ),
+                    Text(
+                      NumberFormat.currency(
+                        locale: 'id',
+                        symbol: 'IDR ',
+                        decimalDigits: 0,
+                      ).format(destination.price * state.length),
+                      style: cBlackTheme14Semibold,
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            "Booking Details",
-            style: cBlackTheme16Semibold,
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16, top: 10),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "Traveler",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "2 Persons",
-                  style: cBlackTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "Seat",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "A3,B3",
-                  style: cBlackTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "Insurance",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "YES",
-                  style: cGreenTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "Refundable",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "NO",
-                  style: cRedTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "VAT",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "45%",
-                  style: cBlackTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "Price",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "IDR 8.500.690",
-                  style: cBlackTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  margin: EdgeInsets.only(right: 6),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logoCheck.png"))),
-                ),
-                Expanded(
-                  child: Text(
-                    "Grand Total",
-                    style: cBlackTheme14Regular,
-                  ),
-                ),
-                Text(
-                  "IDR 12.000.000",
-                  style: cBlackTheme14Semibold,
-                ),
-              ],
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
