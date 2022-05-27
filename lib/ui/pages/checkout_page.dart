@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:learn_app_plane/models/transaction_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 
 class CheckOut extends StatelessWidget {
-  const CheckOut({Key? key}) : super(key: key);
+  final TransactionModel transaction;
+  const CheckOut(this.transaction, {Key? key}) : super(key: key);
 
   Widget headerTitle() {
     return Column(
@@ -45,7 +48,7 @@ class CheckOut extends StatelessWidget {
                   style: cBlackThemeHeadline24,
                 ),
                 Text(
-                  "Ciliwung",
+                  transaction.destination.location,
                   style: cGreyThemeCard14,
                 ),
               ],
@@ -84,8 +87,7 @@ class CheckOut extends StatelessWidget {
                   color: cPurpleColor,
                   borderRadius: BorderRadius.circular(18),
                   image: DecorationImage(
-                      image: AssetImage(
-                          "assets/images/image13BackgroundCiliwung.png"),
+                      image: NetworkImage(transaction.destination.urlImage),
                       fit: BoxFit.cover),
                 ),
               ),
@@ -94,7 +96,7 @@ class CheckOut extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Lake Ciliwung Ciliwung Ciliwung",
+                      transaction.destination.destination,
                       style: cBlackThemeCard18,
                       overflow: TextOverflow.fade,
                       softWrap: false,
@@ -103,7 +105,7 @@ class CheckOut extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      "Tangerang Tangerang Tangerang",
+                      transaction.destination.location,
                       style: cGreyThemeCard14,
                       overflow: TextOverflow.fade,
                       softWrap: false,
@@ -122,7 +124,7 @@ class CheckOut extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
                   Text(
-                    "4.1",
+                    transaction.destination.rating.toString(),
                     style: cBlackTheme14,
                   ),
                 ],
@@ -155,7 +157,7 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "2 Persons",
+                  "${transaction.amoutTraveler} Persons",
                   style: cBlackTheme14Semibold,
                 ),
               ],
@@ -180,7 +182,7 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "A3,B3",
+                  transaction.seat,
                   style: cBlackTheme14Semibold,
                 ),
               ],
@@ -205,7 +207,7 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "YES",
+                  transaction.insurance ? "YES" : "NO",
                   style: cGreenTheme14Semibold,
                 ),
               ],
@@ -230,7 +232,7 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "NO",
+                  transaction.refundable ? "YES" : "NO",
                   style: cRedTheme14Semibold,
                 ),
               ],
@@ -255,7 +257,7 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "45%",
+                  "${(transaction.vat * 100).toInt()}%",
                   style: cBlackTheme14Semibold,
                 ),
               ],
@@ -280,7 +282,11 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "IDR 8.500.690",
+                  NumberFormat.currency(
+                    locale: 'id',
+                    symbol: 'IDR ',
+                    decimalDigits: 0,
+                  ).format(transaction.price),
                   style: cBlackTheme14Semibold,
                 ),
               ],
@@ -305,7 +311,11 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "IDR 12.000.000",
+                  NumberFormat.currency(
+                    locale: 'id',
+                    symbol: 'IDR ',
+                    decimalDigits: 0,
+                  ).format(transaction.total),
                   style: cBlackTheme14Semibold,
                 ),
               ],

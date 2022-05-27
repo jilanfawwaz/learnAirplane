@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:learn_app_plane/cubit/seat_cubit.dart';
 import 'package:learn_app_plane/models/destination_model.dart';
+import 'package:learn_app_plane/models/transaction_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
+import 'package:learn_app_plane/ui/pages/checkout_page.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 import 'package:learn_app_plane/ui/widget/seat_item.dart';
 
@@ -376,6 +378,38 @@ class ChooseSeats extends StatelessWidget {
       );
     }
 
+    Widget checkOutButton() {
+      return BlocBuilder<SeatCubit, List<String>>(
+        builder: (context, state) {
+          return CustomButton(
+            cText: "Continue Checkout",
+            onPressed: () {
+              int price = destination.price * state.length;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CheckOut(
+                    TransactionModel(
+                      destination: destination,
+                      amoutTraveler: state.length,
+                      seat: state.join(', '),
+                      vat: 0.45,
+                      price: price,
+                      total: price + (0.45 * price).toInt(),
+                    ),
+                  ),
+                ),
+              );
+            },
+            cMargin: EdgeInsets.only(
+              top: 30,
+            ),
+            cWidth: double.infinity,
+          );
+        },
+      );
+    }
+
     return Scaffold(
       backgroundColor: cGreyBacgroundColor,
       body: SafeArea(
@@ -389,16 +423,7 @@ class ChooseSeats extends StatelessWidget {
               children: [
                 headerTitle(),
                 mainContent(),
-                CustomButton(
-                  cText: "Continue Checkout",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/checkout');
-                  },
-                  cMargin: EdgeInsets.only(
-                    top: 30,
-                  ),
-                  cWidth: double.infinity,
-                )
+                checkOutButton(),
               ],
             )
           ],
