@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+//import 'package:equatable/equatable.dart';
 
 //part 'seat_state.dart';
 
@@ -24,14 +24,16 @@ class SeatCubit extends Cubit<List<String>> {
   }
 
   void selectSeat(String id) {
-    print("state sebelumnya : $state");
+    //print("state sebelumnya : $state");
     if (!isSelected(id)) {
       state.add(id);
     } else {
       state.remove(id);
     }
 
-    emit(state);
-    print("state sekarang : $state");
+    List<String> seatNow = List.from(state);
+    print(state);
+    emit(seatNow);
+    //print("state sekarang : $state");
   }
 }

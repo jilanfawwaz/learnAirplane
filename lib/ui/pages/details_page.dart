@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
+import 'package:learn_app_plane/ui/pages/choose_seats2.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -375,7 +376,12 @@ class DetailsPage extends StatelessWidget {
                   CustomButton(
                     cText: "Book Now",
                     onPressed: () {
-                      Navigator.pushNamed(context, '/chooseseats');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChooseSeats(destination),
+                        ),
+                      );
                     },
                     cWidth: 170,
                   )

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:learn_app_plane/cubit/seat_cubit.dart';
+import 'package:learn_app_plane/models/destination_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 import 'package:learn_app_plane/ui/widget/seat_item.dart';
 
 class ChooseSeats extends StatelessWidget {
-  const ChooseSeats({Key? key}) : super(key: key);
+  final DestinationModel destination;
+
+  const ChooseSeats(this.destination, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,261 +107,272 @@ class ChooseSeats extends StatelessWidget {
     }
 
     Widget mainContent() {
-      return Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(
-          vertical: 30,
-          horizontal: 22,
-        ),
-        decoration: BoxDecoration(
-          color: cWhiteColor,
-          borderRadius: BorderRadius.circular(18),
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      return BlocBuilder<SeatCubit, List<String>>(
+        builder: (context, state) {
+          state.sort();
+          return Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(
+              vertical: 30,
+              horizontal: 22,
+            ),
+            decoration: BoxDecoration(
+              color: cWhiteColor,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Column(
               children: [
-                Container(
-                  width: 48,
-                  height: 48,
-                  child: Center(
-                    child: Text(
-                      "A",
-                      style: cGreyThemeCard16Regular,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: Center(
+                        child: Text(
+                          "A",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
                     ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: Center(
+                        child: Text(
+                          "B",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: Center(
+                        child: Text(
+                          "",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: Center(
+                        child: Text(
+                          "C",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: Center(
+                        child: Text(
+                          "D",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SeatItem(
+                      id: "A1",
+                      isAvailable: false,
+                    ),
+                    SeatItem(
+                      id: "B1",
+                      isAvailable: false,
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      margin: EdgeInsets.only(
+                        top: 16,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "1",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    SeatItem(
+                      id: "C1",
+                    ),
+                    SeatItem(
+                      id: "D1",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SeatItem(
+                      id: "A2",
+                    ),
+                    SeatItem(
+                      id: "B2",
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      margin: EdgeInsets.only(
+                        top: 16,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "2",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    SeatItem(
+                      id: "C2",
+                    ),
+                    SeatItem(
+                      id: "D2",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SeatItem(
+                      id: "A3",
+                    ),
+                    SeatItem(
+                      id: "B3",
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      margin: EdgeInsets.only(
+                        top: 16,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "3",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    SeatItem(
+                      id: "C3",
+                    ),
+                    SeatItem(
+                      id: "D3",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SeatItem(
+                      id: "A4",
+                    ),
+                    SeatItem(
+                      id: "B4",
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      margin: EdgeInsets.only(
+                        top: 16,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "4",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    SeatItem(
+                      id: "C4",
+                    ),
+                    SeatItem(
+                      id: "D4",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SeatItem(
+                      id: "A5",
+                    ),
+                    SeatItem(
+                      id: "B5",
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      margin: EdgeInsets.only(
+                        top: 16,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "5",
+                          style: cGreyThemeCard16Regular,
+                        ),
+                      ),
+                    ),
+                    SeatItem(
+                      id: "C5",
+                    ),
+                    SeatItem(
+                      id: "D5",
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 30),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "Your seat",
+                          style: cGreyThemeCard14,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          //state.toString(),
+                          state.isEmpty ? "No Seat Selected" : state.join(', '),
+                          style: cBlackTheme16Medium,
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
-                  width: 48,
-                  height: 48,
-                  child: Center(
-                    child: Text(
-                      "B",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  child: Center(
-                    child: Text(
-                      "",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  child: Center(
-                    child: Text(
-                      "C",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  child: Center(
-                    child: Text(
-                      "D",
-                      style: cGreyThemeCard16Regular,
-                    ),
+                  margin: EdgeInsets.only(top: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "Total",
+                          style: cGreyThemeCard14,
+                        ),
+                      ),
+                      Text(
+                        NumberFormat.currency(
+                                locale: 'id', symbol: 'IDR ', decimalDigits: 0)
+                            .format(state.length * destination.price),
+                        style: cPurpleTheme16Semibold,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SeatItem(
-                  id: "A1",
-                  isAvailable: false,
-                ),
-                SeatItem(
-                  id: "B1",
-                  isAvailable: false,
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: EdgeInsets.only(
-                    top: 16,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "1",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                SeatItem(
-                  id: "C1",
-                ),
-                SeatItem(
-                  id: "D1",
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SeatItem(
-                  id: "A2",
-                ),
-                SeatItem(
-                  id: "B2",
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: EdgeInsets.only(
-                    top: 16,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "2",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                SeatItem(
-                  id: "C2",
-                ),
-                SeatItem(
-                  id: "D2",
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SeatItem(
-                  id: "A3",
-                ),
-                SeatItem(
-                  id: "B3",
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: EdgeInsets.only(
-                    top: 16,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "3",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                SeatItem(
-                  id: "C3",
-                ),
-                SeatItem(
-                  id: "D3",
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SeatItem(
-                  id: "A4",
-                ),
-                SeatItem(
-                  id: "B4",
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: EdgeInsets.only(
-                    top: 16,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "4",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                SeatItem(
-                  id: "C4",
-                ),
-                SeatItem(
-                  id: "D4",
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SeatItem(
-                  id: "A5",
-                ),
-                SeatItem(
-                  id: "B5",
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: EdgeInsets.only(
-                    top: 16,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "5",
-                      style: cGreyThemeCard16Regular,
-                    ),
-                  ),
-                ),
-                SeatItem(
-                  id: "C5",
-                ),
-                SeatItem(
-                  id: "D5",
-                ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 30),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "Your seat",
-                      style: cGreyThemeCard14,
-                    ),
-                  ),
-                  Text(
-                    "A3,B3",
-                    style: cBlackTheme16Medium,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "Total",
-                      style: cGreyThemeCard14,
-                    ),
-                  ),
-                  Text(
-                    "IDR 540.000.000",
-                    style: cPurpleTheme16Semibold,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       );
     }
 
