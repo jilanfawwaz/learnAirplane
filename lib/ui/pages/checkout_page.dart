@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:learn_app_plane/cubit/auth_cubit.dart';
 import 'package:learn_app_plane/models/transaction_model.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
@@ -327,60 +329,68 @@ class CheckOut extends StatelessWidget {
   }
 
   Widget paymentDetail() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 30,
-      ),
-      margin: EdgeInsets.only(
-        top: 30,
-        bottom: 30,
-      ),
-      decoration: BoxDecoration(
-        color: cWhiteColor,
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Payment Details",
-            style: cBlackTheme16Semibold,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(right: 16),
-                width: 100,
-                height: 70,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/logoPay.png"))),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "IDR 80.400.000",
-                    style: cBlackTheme18Medium,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Current Balance",
-                    style: cGreyThemeCard14,
-                  ),
-                ],
-              )
-            ],
-          ),
-        ],
-      ),
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (context, state) {
+        if (state is AuthSuccess) {
+          return Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 30,
+            ),
+            margin: EdgeInsets.only(
+              top: 30,
+              bottom: 30,
+            ),
+            decoration: BoxDecoration(
+              color: cWhiteColor,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Payment Details",
+                  style: cBlackTheme16Semibold,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 16),
+                      width: 100,
+                      height: 70,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/logoPay.png"))),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          state.user.balance.toString(),
+                          style: cBlackTheme18Medium,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Current Balance",
+                          style: cGreyThemeCard14,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          );
+        } else {
+          return SizedBox();
+        }
+      },
     );
   }
 
