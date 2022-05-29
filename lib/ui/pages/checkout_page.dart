@@ -183,9 +183,12 @@ class CheckOut extends StatelessWidget {
                     style: cBlackTheme14Regular,
                   ),
                 ),
-                Text(
-                  transaction.seat,
-                  style: cBlackTheme14Semibold,
+                Expanded(
+                  child: Text(
+                    transaction.seat,
+                    style: cBlackTheme14Semibold,
+                    textAlign: TextAlign.right,
+                  ),
                 ),
               ],
             ),
@@ -210,7 +213,9 @@ class CheckOut extends StatelessWidget {
                 ),
                 Text(
                   transaction.insurance ? "YES" : "NO",
-                  style: cGreenTheme14Semibold,
+                  style: transaction.insurance
+                      ? cGreenTheme14Semibold
+                      : cGreenTheme14Semibold.copyWith(color: cRedColor),
                 ),
               ],
             ),
@@ -235,7 +240,9 @@ class CheckOut extends StatelessWidget {
                 ),
                 Text(
                   transaction.refundable ? "YES" : "NO",
-                  style: cRedTheme14Semibold,
+                  style: transaction.refundable
+                      ? cRedTheme14Semibold.copyWith(color: cGreenColor)
+                      : cRedTheme14Semibold,
                 ),
               ],
             ),
