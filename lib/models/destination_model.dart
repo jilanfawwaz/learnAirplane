@@ -30,7 +30,7 @@ class DestinationModel extends Equatable {
         urlImage: json['urlImage'],
         about: json['about'],
         price: json['price'],
-        rating: json['nilai'].toDouble(),
+        rating: json['rating'].toDouble(),
       );
 
   /*Map<String, dynamic> toJson() => {
@@ -68,6 +68,13 @@ class DestinationModel extends Equatable {
   }*/
 
   @override
-  List<Object?> get props =>
-      [id, destination, location, rating, price, urlImage, about];
+  List<Object?> get props => [
+        id,
+        destination,
+        location,
+        rating,
+        price,
+        urlImage,
+        about,
+      ];
 }
