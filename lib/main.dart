@@ -6,6 +6,7 @@ import 'package:learn_app_plane/cubit/destination2_cubit.dart';
 import 'package:learn_app_plane/cubit/destination_cubit.dart';
 import 'package:learn_app_plane/cubit/page_cubit.dart';
 import 'package:learn_app_plane/cubit/seat_cubit.dart';
+import 'package:learn_app_plane/cubit/transaction_cubit.dart';
 import 'package:learn_app_plane/ui/pages/bonus_page.dart';
 import 'package:learn_app_plane/ui/pages/checkout_page.dart';
 //import 'package:learn_app_plane/ui/pages/choose_seats.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SeatCubit(),
         ),
+        BlocProvider(
+          create: (context) => TransactionCubit(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

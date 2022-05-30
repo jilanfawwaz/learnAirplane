@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:learn_app_plane/models/destination2_model.dart';
 
 class Destination2Service {
-  CollectionReference _destinationReference =
+  final CollectionReference _destinationReference =
       FirebaseFirestore.instance.collection("destination2");
 
   Future<List<Destination2Model>> fetchDestination() async {

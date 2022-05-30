@@ -9,7 +9,7 @@ class DestinationModel extends Equatable {
   final double rating;
   final int price;
 
-  DestinationModel({
+  const DestinationModel({
     required this.id,
     required this.destination,
     required this.location,
@@ -33,8 +33,30 @@ class DestinationModel extends Equatable {
         rating: json['nilai'].toDouble(),
       );
 
+  /*Map<String, dynamic> toJson() => {
+        'id': id,
+        'destination': destination,
+        'location': location,
+        'urlImage': urlImage,
+        'about': about,
+        'price': price,
+        'rating': rating,
+      };*/
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'destination': destination,
+      'location': location,
+      'urlImage': urlImage,
+      'about': about,
+      'price': price,
+      'rating': rating,
+    };
+  }
+
   /*factory DestinationModel.fromJson(String id, Map<String, dynamic> json) {
-    //method menyimpan file dari json, dan di parsing menjadi beberapa tabel (destination, location, dll)
+    
     return DestinationModel(
       id: id,
       destination: json['destination'],
