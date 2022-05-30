@@ -3,7 +3,7 @@ import 'package:learn_app_plane/models/destination_model.dart';
 
 class TransactionModel extends Equatable {
   final DestinationModel destination;
-  final int amoutTraveler;
+  final int amountTraveler;
   final String seat;
   final bool insurance;
   final bool refundable;
@@ -13,7 +13,7 @@ class TransactionModel extends Equatable {
 
   TransactionModel({
     required this.destination,
-    this.amoutTraveler = 0,
+    this.amountTraveler = 0,
     this.seat = '',
     this.insurance = true,
     this.refundable = false,
@@ -25,7 +25,7 @@ class TransactionModel extends Equatable {
   @override
   List<Object?> get props => [
         destination,
-        amoutTraveler,
+        amountTraveler,
         seat,
         insurance,
         refundable,

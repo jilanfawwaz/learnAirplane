@@ -391,7 +391,7 @@ class ChooseSeats extends StatelessWidget {
                   builder: (context) => CheckOut(
                     TransactionModel(
                       destination: destination,
-                      amoutTraveler: state.length,
+                      amountTraveler: state.length,
                       seat: state.join(', '),
                       vat: 0.45,
                       price: price,

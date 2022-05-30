@@ -160,7 +160,7 @@ class CheckOut extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${transaction.amoutTraveler} Persons",
+                  "${transaction.amountTraveler} Persons",
                   style: cBlackTheme14Semibold,
                 ),
               ],

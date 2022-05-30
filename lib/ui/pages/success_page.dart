@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_app_plane/cubit/page_cubit.dart';
 import 'package:learn_app_plane/shared/theme.dart';
 import 'package:learn_app_plane/ui/widget/custom_button.dart';
 
@@ -43,7 +45,9 @@ class SuccessPage extends StatelessWidget {
             CustomButton(
               cText: "My Bookings",
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                context.read<PageCubit>().setPage(1);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/mainpage', (route) => false);
               },
               cMargin: EdgeInsets.only(
                 top: 50,
