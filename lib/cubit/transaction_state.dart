@@ -17,7 +17,7 @@ class TransactionSuccess extends TransactionState {
   TransactionSuccess(this.transaction);
 
   @override
-  // TODO: implement props
+ 
   List<Object> get props => [transaction];
 }
 
@@ -27,6 +27,6 @@ class TransactionFailed extends TransactionState {
   TransactionFailed(this.error);
 
   @override
-  // TODO: implement props
+  
   List<Object> get props => [error];
 }
